@@ -21,11 +21,15 @@ const store = createStore(reducer);
 
 store.subscribe(() => console.log(store.getState()));
 
+const addToDo = (text) => {
+  store.dispatch({ type: ADD_TODO, text: text });
+};
+
 const onSubmit = (e) => {
   e.preventDefault();
   const toDo = input.value;
   input.value = "";
-  store.dispatch({ type: ADD_TODO, text: toDo });
+  addToDo(toDo);
 };
 
 form.addEventListener("submit", onSubmit);
